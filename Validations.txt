@@ -1,0 +1,30 @@
+ private static bool ValidateEmp(Employee e)
+        {
+            bool validate = true;
+            try
+            {
+                
+                //if(!(e.ID.StartsWith("C")&& e.ID.Substring(1, 4).All(char.IsDigit)))
+                //{
+                //    validate = false;
+                //    Console.WriteLine("Enter valid ID ");
+                //}
+
+                if (e.Mobile.Length!=10)
+                { validate = false;
+                  Console.WriteLine("Mobile number shoult be of 10-digit");
+                }
+
+                if (!(Regex.IsMatch(e.Mobile,"([8-9]{1}[0-9]{9})")))
+                {
+                    validate = false;
+                    Console.WriteLine("Mobile number should start with 8 or 9");
+                }
+
+                if (!(Regex.IsMatch(e.Email, @"([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)
+                   |(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)")))
+                {
+                    validate = false;
+                    Console.WriteLine("Invalid email number");
+                }
+
